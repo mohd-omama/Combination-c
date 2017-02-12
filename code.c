@@ -3,10 +3,7 @@
 
 
 void combination1 (char []);	
-void combination2 (char []);						
-
-
-char copy[20][20];									
+void combination2 (char [], int);						
 
 char out[20];										
 
@@ -40,7 +37,7 @@ void combination1 (char a[])
 	if (comb_size>str_len)
 		return;
 	else{
-		combination2 (a);
+		combination2 (a,0);
 		
 		--fixer_in;		
 		
@@ -54,22 +51,21 @@ void combination1 (char a[])
 }
 
 
-void combination2 (char a[])
+void combination2 (char a[],int k)
 {
 	++fixer_in;
 	
-	int fixer_out=fixer_in;
-	int k=fixer_in,i;
+	int fixer_out=fixer_in,i;
 	if (fixer_in>comb_size){
 		printf("%s\n",out);
 		return;
 	}
 	
 	else{
-		for(i=0;i<fixer_movement;i++){
+		for(i=k;i<fixer_movement;i++){
 			
-			out[fixer_out-1]=a[i+k-1];
-			combination2 (a);
+			out[fixer_out-1]=a[i+fixer_out-1];
+			combination2 (a,i);
 			--fixer_in;
 		
 		}
