@@ -2,13 +2,21 @@
 #include <string.h>
 
 
-void combination1 (char []);	
-void combination2 (char [], int);						
+void combination1 (char []);					 // specifies combination size
+void combination2 (char [], int);			    // prints all combinations of the given size
 
 char out[20];										
 
 
-int comb_size=0,num=0,str_len,fixer_in=0,fixer_movement;	
+int comb_size=0,num=0,str_len,fixer_in=0,fixer_movement,comb_num;			
+
+/*
+fixer_in is the place holder for input string.It is basically represents the element of the input string that will go 
+in the first position of the output string.
+fixer_movement defines the movement of the first elemnt of the output string.(Its a bit tough to explain :/).
+comb_num is the serial number for printing combinations of a particular size.
+*/
+
 
 
 int main()
@@ -31,15 +39,16 @@ int main()
 
 void combination1 (char a[])
 {
-	
+	comb_num =0;
 	++comb_size;
 	fixer_movement=str_len-comb_size+1; 
 	if (comb_size>str_len)
 		return;
 	else{
+		printf ("\nThe combinations of size %d are : \n",comb_size);
 		combination2 (a,0);
 		
-		--fixer_in;		
+		--fixer_in;				// this is done so fixer in return to its original value,i.e, 0.
 		
 		combination1 (a);
 	
@@ -51,13 +60,14 @@ void combination1 (char a[])
 }
 
 
-void combination2 (char a[],int k)
+void combination2 (char a[],int k)		// k represents the fixer movement of the respective elements of output string.
 {
 	++fixer_in;
 	
-	int fixer_out=fixer_in,i;
+	int fixer_out=fixer_in,i;			//fixer_out is the place holder for output string.
 	if (fixer_in>comb_size){
-		printf("%s\n",out);
+		++comb_num;
+		printf("%d)\t%s\n",comb_num,out);
 		return;
 	}
 	
