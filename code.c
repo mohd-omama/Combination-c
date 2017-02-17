@@ -8,7 +8,7 @@ void combination2 (char [], int);			    // prints all combinations of the given 
 char out[20];										
 
 
-int comb_size=0,num=0,str_len,fixer_in=0,fixer_movement,comb_num;			
+int comb_size=0,str_len,fixer_in=0,fixer_movement,comb_num;			
 
 /*
 fixer_in is the place holder for input string.It is basically represents the element of the input string that will go 
